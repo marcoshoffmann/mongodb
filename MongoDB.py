@@ -10,6 +10,9 @@ class MongoDB:
         self.client = MongoClient(host=getenv('DB_HOST'), port=int(getenv('DB_PORT')))
         self.database = self.client.get_database(name=getenv('DB_NAME'))
 
+    def verify_connection(self):
+	if self.collection(): return True
+
     @property
     def collection(self):
         return self._collection
